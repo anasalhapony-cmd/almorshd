@@ -13,18 +13,8 @@ import { site, siteUrl } from '@/config/site';
 import type { SelectableColor } from '@/stores/selection-store';
 import type { PublicSpec } from '@/types/domain';
 
-/**
- * Landing page — a Server Component.
- *
- * All data is fetched here, in parallel, and passed down. The client islands
- * (hero motion, colour selector, comparison tabs, 3D viewer) receive plain
- * props; none of them fetches anything, so there is no waterfall and no
- * loading spinner on first paint.
- *
- * Availability is revalidated every 60s: fresh enough that a sold-out colour
- * stops showing as available within a minute, cheap enough to survive a launch.
- */
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
