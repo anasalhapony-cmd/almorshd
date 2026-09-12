@@ -4,6 +4,9 @@ import { ArrowRight } from 'lucide-react';
 import { TrackForm } from './track-form';
 import { routes } from '@/config/site';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'تتبع حجزك',
   description: 'تابع حالة حجزك في المرشد باستخدام رقم الحجز ورقم هاتفك.',
