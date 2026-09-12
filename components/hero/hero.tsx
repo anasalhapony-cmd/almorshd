@@ -62,6 +62,9 @@ const colorImageMap: Record<string, string> = {
 
 export function Hero({ product, bookingWindow, maintenanceMessage }: HeroProps) {
   const reduceMotion = useReducedMotion();
+  const selected = useSelectionStore((s: any) =>
+    typeof s.selected === 'function' ? s.selected() : s.selected
+  );
   const selectedKey = (selected?.id || (selected as any)?.name || selected?.hex || '').toLowerCase();
 
   const rise = (delay: number) =>
