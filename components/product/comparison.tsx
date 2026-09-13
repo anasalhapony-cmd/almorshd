@@ -28,10 +28,10 @@ function getCompareImage(product: PublicProduct): string {
 // جدول المواصفات والمقارنة بين الجيلين
 const comparisonSpecsData = [
   { key: 'chip', label: 'المعالج', val17: 'A19 Pro', val18: 'A20 Pro' },
-  { key: 'battery', label: 'البطارية', val17: '4823 mAh', val18: '5391 mAh' },
+  { key: 'battery', label: 'البطارية', val17: '5088 mAh', val18: '5567 mAh' },
   { key: 'weight', label: 'الوزن', val17: '233 غرام', val18: '249 غرام' },
   { key: 'display', label: 'الشاشة', val17: 'OLED 120Hz', val18: 'OLED 120Hz' },
-  { key: 'dimensions', label: 'الأبعاد', val17: 'شاشة 6.7 بوصة', val18: 'شاشة 6.7 بوصة' },
+  { key: 'dimensions', label: 'الأبعاد', val17: 'شاشة 6.9 بوصة', val18: 'شاشة 6.9 بوصة' },
   { key: 'camera', label: 'الكاميرا', val17: '48 MP', val18: '48 MP' },
   { key: 'materials', label: 'الخامات', val17: 'هيكل من الألمنيوم', val18: 'هيكل من الألمنيوم' },
   {

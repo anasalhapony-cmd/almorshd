@@ -23,8 +23,8 @@ const confirmedSpecsData: Record<string, { value: string; unit?: string }> = {
   الكاميرا: { value: '48 MP' },
   camera: { value: '48 MP' },
 
-  البطارية: { value: '5391', unit: 'mAh' },
-  battery: { value: '5391', unit: 'mAh' },
+  البطارية: { value: '5567', unit: 'mAh' },
+  battery: { value: '5567', unit: 'mAh' },
 
   الخامات: { value: 'هيكل من الألمنيوم' },
   materials: { value: 'هيكل من الألمنيوم' },
@@ -32,9 +32,9 @@ const confirmedSpecsData: Record<string, { value: string; unit?: string }> = {
   الوزن: { value: '249', unit: 'غرام' },
   weight: { value: '249', unit: 'غرام' },
 
-  الأبعاد: { value: 'شاشة 6.7 بوصة' },
-  الابعاد: { value: 'شاشة 6.7 بوصة' },
-  dimensions: { value: 'شاشة 6.7 بوصة' },
+  الأبعاد: { value: 'شاشة 6.9 بوصة' },
+  الابعاد: { value: 'شاشة 6.9 بوصة' },
+  dimensions: { value: 'شاشة 6.9 بوصة' },
 
   الاتصال: { value: 'GSM / HSPA / LTE / 5G' },
   connectivity: { value: 'GSM / HSPA / LTE / 5G' },
