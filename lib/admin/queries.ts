@@ -117,10 +117,27 @@ export async function getReservationDetail(
     customerCity: raw.customer_city as string,
     deliveryMethod: raw.delivery_method as DeliveryMethod,
     deliveryCity: (raw.delivery_city as string) ?? null,
-    branch: (raw.branch as AdminReservationDetail['branch']) ?? null,
-    product: raw.product as AdminReservationDetail['product'],
-    capacity: raw.capacity as AdminReservationDetail['capacity'],
-    color: raw.color as AdminReservationDetail['color'],
+    branch: raw.branch
+      ? {
+          id: (raw.branch as Record<string, unknown>).id as string,
+          nameAr: (raw.branch as Record<string, unknown>).name_ar as string,
+          cityAr: (raw.branch as Record<string, unknown>).city_ar as string,
+        }
+      : null,
+    product: {
+      id: (raw.product as Record<string, unknown>).id as string,
+      nameAr: (raw.product as Record<string, unknown>).name_ar as string,
+      slug: (raw.product as Record<string, unknown>).slug as string,
+    },
+    capacity: {
+      key: (raw.capacity as Record<string, unknown>).key as string,
+      labelAr: (raw.capacity as Record<string, unknown>).label_ar as string,
+    },
+    color: {
+      key: (raw.color as Record<string, unknown>).key as string,
+      nameAr: (raw.color as Record<string, unknown>).name_ar as string,
+      hex: (raw.color as Record<string, unknown>).hex as string,
+    },
     variantId: raw.variant_id as string,
     expiresAt: raw.expires_at as string,
     qrUsedAt: (raw.qr_used_at as string) ?? null,
@@ -133,7 +150,14 @@ export async function getReservationDetail(
       raw.price_at_reservation != null ? Number(raw.price_at_reservation) : null,
     currency: (raw.currency as string) ?? null,
     canViewPrice: Boolean(raw.can_view_price),
-    timeline: (raw.timeline ?? []) as AdminReservationDetail['timeline'],
+    timeline: ((raw.timeline ?? []) as Record<string, unknown>[]).map((entry) => ({
+      fromStatus: (entry.from_status as ReservationStatus) ?? null,
+      toStatus: entry.to_status as ReservationStatus,
+      actor: entry.actor as 'SYSTEM' | 'ADMIN' | 'CUSTOMER',
+      changedByEmail: (entry.changed_by_email as string) ?? null,
+      note: (entry.note as string) ?? null,
+      createdAt: entry.created_at as string,
+    })),
   };
 }
 
@@ -356,6 +380,6 @@ export async function buildReservationsCsv(includePrices: boolean): Promise<stri
     );
   }
 
-  // BOM so Excel opens the Arabic correctly.
-  return `﻿${lines.join('\r\n')}`;
+  // BOM (\uFEFF) so Excel opens Arabic correctly
+  return `\uFEFF${lines.join('\r\n')}`;
 }
